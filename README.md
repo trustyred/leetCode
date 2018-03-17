@@ -1,4 +1,4 @@
-#leetCode 
+# leetCode 
 
-##Finished
+## Finished
 ### 1.Two Sum	
