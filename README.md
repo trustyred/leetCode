@@ -12,3 +12,6 @@
 ### 9.Palindrome Number
 ### 10.Container With Most Water
 ### 11.Integer to Roman
+### 12.Roman to Integer
+### 13.Longest Common Prefix
+
