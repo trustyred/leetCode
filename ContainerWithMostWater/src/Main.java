@@ -12,6 +12,7 @@ public class Main {
 
     public int maxArea(int[] height) {
         int max = 0;
+        //找到问题关键，就是最短版决定了水位的高度，题目就怎么解都简单了
         for(int i=0,j=height.length-1 ;i!=j;){
             int minLine = (int) Collections.min(Arrays.asList(height[i],height[j]));
             int currentContainer = minLine * (j-i);
