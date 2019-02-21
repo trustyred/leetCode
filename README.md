@@ -25,3 +25,5 @@
 ### 22.Merge k Sorted Lists
 ### 23.Swap Nodes in Pairs
 ### 24.Reverse Nodes in k-Group
+### 25.Remove Duplicates from Sorted Array
+### 26.Remove Element
