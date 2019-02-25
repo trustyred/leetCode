@@ -6,9 +6,14 @@ import (
 )
 
 func main() {
-	var result []int
-	result = findSubstring("foobarfoobar",[]string{"foo","bar"})
-    fmt.Println(result)
+	m := map[string]int{
+		"abc":1,
+		"bcd":2,
+	}
+	if a,b := m["ecd"] ;b{
+		fmt.Println(a,b)
+	}
+	fmt.Println(findSubstring("wordgoodgoodgoodbestword",[]string{"word","good","best","good"}))
 }
 
 func RemoveIndex(s []string, index int) []string {
@@ -18,7 +23,7 @@ func RemoveIndex(s []string, index int) []string {
 }
 
 //solution use backtrack but Time Limit Exceeded
-func findSubstring(s string, words []string) []int {
+func findSubstring_time_limit(s string, words []string) []int {
 	substrToIndex := map[int]string{}
 	if len(s) == 0 || len(words)==0{
 		return []int{}
@@ -61,4 +66,37 @@ func backtrack(strBase string,substrToIndex map[int]string,cur string , words []
 		backtrack(strBase, substrToIndex, cur + words[i], curWords)
 	}
 
+}
+func findSubstring(s string, words []string) []int {
+	wordsToCount := map[string]int{}
+	var result []int
+	for i:= range words{
+		wordsToCount[words[i]] = wordsToCount[words[i]]+1
+	}
+	if len(words) == 0{
+		return result
+	}
+	wordLen := len(words[0])
+	sLen := len(s)
+	wordNum := len(words)
+	for i:=0;i<sLen-wordLen*wordNum+1;i++ {
+		j := 0
+		seenWordsToCount := map[string]int{}
+		for j<wordNum {
+			subStr := s[i+j*(wordLen):i+(j+1)*wordLen]
+			if value,isExist := wordsToCount[subStr]; isExist{
+				seenWordsToCount[subStr] = seenWordsToCount[subStr]+1
+				if value <  seenWordsToCount[subStr]{
+					break
+				}
+			}else{
+				break
+			}
+			j++
+		}
+		if j == wordNum {
+			result = append(result,i)
+		}
+	}
+	return result
 }
