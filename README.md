@@ -28,3 +28,7 @@
 ### 26.Remove Duplicates from Sorted Array
 ### 27.Remove Element
 ### 28.Divide Two Integers
+### 29.Substring with Concatenation of All Words
+### 30.Next Permutation
+### 31.Longest Valid Parentheses
+### 32.Search in Rotated Sorted Array
