@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	result := combine(4,2)
+	result := combine(2,2)
 	fmt.Println(result)
 }
 
@@ -15,25 +15,34 @@ func combine(n int, k int) [][]int {
 		remain = append(remain,i+1)
 	}
 	var result [][]int
-	result = backtrack([]int{},remain,n,result)
+	result = backtrack([]int{},remain,k,result)
 	return result
 }
 
 func backtrack(current []int, remain []int,n int,result [][]int) [][]int{
 	if n==0{
-		tmpCurrent := make([]int,len(current))
-		copy(tmpCurrent,current)
-		result = append(result,tmpCurrent)
+		//tmpCurrent := make([]int,len(current))
+		//copy(tmpCurrent,current)
+		result = append(result,current)
 		return result
 	}
-	for i:=0;i<len(remain);i++{
+	lengthRemain := len(remain)
+	for i:=0;i<lengthRemain;i++{
+		//fmt.Println("remain",remain)
 		tmp := make([]int,len(remain))
 		copy(tmp,remain)
-		delRemain(tmp,i)
-		result = backtrack(append(current,remain[i]),tmp,n-1,result)
+		tmp = delRemain(tmp,0)
+		tmpCurrent := make([]int,len(current))
+		copy(tmpCurrent,current)
+		//fmt.Println("tmp",tmp)
+
+		result = backtrack(append(tmpCurrent,remain[0]),tmp,n-1,result)
+		remain = delRemain(remain,0)
+		//fmt.Println("remain2",remain)
 	}
 	return result
 }
-func delRemain(remain []int,index int){
+func delRemain(remain []int,index int) []int{
 	remain = append(remain[:index],remain[index+1:]...)
+	return remain
 }
